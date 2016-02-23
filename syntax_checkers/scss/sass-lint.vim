@@ -8,22 +8,22 @@
 "             Want To Public License, Version 2, as published by Sam Hocevar.
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "============================================================================
-if exists('g:loaded_syntastic_sass_sass_lint_checker')
+if exists('g:loaded_syntastic_scss_sass_lint_checker')
     finish
 endif
-let g:loaded_syntastic_sass_sass_lint_checker = 1
+let g:loaded_syntastic_scss_sass_lint_checker = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
 
-function! SyntaxCheckers_sass_sass_lint_IsAvailable() dict
+function! SyntaxCheckers_scss_sass_lint_IsAvailable() dict
     if !executable(self.getExec())
         return 0
     endif
     return syntastic#util#versionIsAtLeast(self.getVersion(), [1, 4])
 endfunction
 
-function! SyntaxCheckers_sass_sass_lint_GetLocList() dict
+function! SyntaxCheckers_scss_sass_lint_GetLocList() dict
 
     " Use eslint compact format
     let makeprg = self.makeprgBuild({ 'args_before': '-v -f compact' })
@@ -41,7 +41,7 @@ function! SyntaxCheckers_sass_sass_lint_GetLocList() dict
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
-    \ 'filetype': 'sass',
+    \ 'filetype': 'scss',
     \ 'name': 'sass_lint',
     \ 'exec': 'sass-lint' })
 
